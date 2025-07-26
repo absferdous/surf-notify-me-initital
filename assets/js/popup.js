@@ -1,16 +1,36 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const popup = document.getElementById('ssn-popup');
-    if (popup) {
-        popup.style.position = 'fixed';
-        popup.style.bottom = '20px';
-        popup.style.left = '20px';
-        popup.style.padding = '12px 18px';
-        popup.style.backgroundColor = '#1e87f0';
-        popup.style.color = '#fff';
-        popup.style.borderRadius = '8px';
-        popup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-        popup.style.zIndex = '9999';
+document.addEventListener("DOMContentLoaded", function () {
+  const popups = document.querySelectorAll(".ssn-popup");
 
-        setTimeout(() => popup.remove(), 6000);
+  popups.forEach((popup) => {
+    const position = popup.dataset.position || "bottom-left";
+    const entrance = popup.dataset.entrance || "slide-in";
+    const exit = popup.dataset.exit || "slide-out";
+    const offsetX = popup.dataset.offsetX || "20";
+    const offsetY = popup.dataset.offsetY || "20";
+
+    // Apply position and offset
+    popup.classList.add(position);
+    if (position.includes("top")) {
+      popup.style.top = offsetY + "px";
+    } else {
+      popup.style.bottom = offsetY + "px";
     }
+    if (position.includes("left")) {
+      popup.style.left = offsetX + "px";
+    } else {
+      popup.style.right = offsetX + "px";
+    }
+
+    // Show popup
+    popup.classList.add(entrance);
+
+    // Hide popup after 5 seconds
+    setTimeout(() => {
+      popup.classList.remove(entrance);
+      popup.classList.add(exit);
+      popup.addEventListener("animationend", () => {
+        popup.remove();
+      });
+    }, 5000);
+  });
 });

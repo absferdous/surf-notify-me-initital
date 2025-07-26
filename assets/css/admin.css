@@ -1,11 +1,115 @@
-.ssn-wrap h1 {
-    color: #1e87f0;
+.ssn-wrap {
+  margin-top: 20px;
 }
-.ssn-wrap .card {
-    background: #fff;
-    padding: 20px;
-    border-left: 4px solid #1e87f0;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin-top: 20px;
-    border-radius: 6px;
+
+.ssn-popup {
+  position: fixed;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.ssn-product-image {
+  margin-right: 15px;
+}
+
+.ssn-product-image img {
+  max-width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Positions */
+.ssn-popup.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+.ssn-popup.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+.ssn-popup.top-left {
+  top: 20px;
+  left: 20px;
+}
+.ssn-popup.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+/* Entrance Animations */
+@keyframes slide-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes zoom-in {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Exit Animations */
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes zoom-out {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.5);
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+}
+.fade-in {
+  animation: fade-in 0.5s forwards;
+}
+.zoom-in {
+  animation: zoom-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s forwards;
+}
+.fade-out {
+  animation: fade-out 0.5s forwards;
+}
+.zoom-out {
+  animation: zoom-out 0.5s forwards;
 }
